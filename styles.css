@@ -1,0 +1,489 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(145deg, #5dfc8b, #2f4c3e, #4cae50, #c4e7d4, #e6f9e8); /* Gradiente ampliado com mais cores */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-size: 400% 400%; /* Aumenta o tamanho do background para mais fluidez */
+  animation: gradientAnimation 12s ease infinite; /* Aumenta a duração da animação */
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+.chat-container {
+  background: linear-gradient(145deg, #e6f9e8, #c4e7d4);;
+  background-size: 300% 300%;
+  animation: gradientAnimation 15s ease infinite;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  padding: 50px; /* Aumentar padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+  border: 5px solid #004d40;
+  overflow: auto;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #004d40;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px; /* Aumentar o espaço */
+}
+
+.header h1 span {
+  color: #2e7d32;
+  font-weight: 800;
+}
+
+.header p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #004d40;
+}
+
+.logo img {
+  width: 80%; /* Aumentar a largura da imagem */
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto; /* Centraliza a imagem */
+  display: block;
+}
+
+.chat-box {
+  flex-grow: 1;
+  overflow-y: auto;
+  background: linear-gradient(145deg, #e6f9e8, #c4e7d4);
+  border: 2px solid #004d40;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.user-message,
+.assistant-message {
+  margin: 15px 0;
+  padding: 15px 30px;
+  border-radius: 50px;
+  max-width: 80%;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.user-message {
+  background-color: #2e7d32;
+  color: white;
+  align-self: flex-end;
+  text-align: right;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borda suave */
+}
+
+.assistant-message {
+  background-color: #eeeeee;
+  align-self: flex-start;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Borda suave */
+}
+
+.input-section {
+  display: flex;
+  align-items: center;
+  padding-top: 25px; /* Aumentar o padding */
+  border-top: 2px solid #004d40;
+}
+
+.input-section input {
+  flex-grow: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  margin-right: 15px;
+  outline: none;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.2s;
+}
+
+.input-section input:focus {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 77, 64, 0.3);
+}
+
+.input-section button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 20px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.input-section button:hover {
+  background-color: #1b5e20;
+  transform: scale(1.1);
+}
+
+.input-section button:active {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px);
+}
+
+.pulse-button {
+  position: relative;
+}
+
+.pulse-button::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(46, 125, 50, 0.4);
+  z-index: 1;
+  animation: pulse 1.5s infinite;
+}
+
+.pulse-button i {
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Customização da barra de rolagem */
+.chat-box::-webkit-scrollbar {
+  width: 12px; /* Aumentar largura da barra de rolagem */
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: #2e7d32;
+  border-radius: 10px;
+}
+
+.chat-box::-moz-scrollbar {
+  width: 12px; /* Aumentar largura da barra de rolagem */
+}
+
+.chat-box::-moz-scrollbar-thumb {
+  background-color: #2e7d32;
+  border-radius: 10px;
+}
+.initial-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Para centralizar verticalmente */
+  font-size: 1.5rem;
+  color: #004d40;
+  opacity: 0.6;
+}
+/* Estilo para o botão de definição da voz */
+.voice-select-container {
+  position: fixed; /* Fixa o botão em um local da tela */
+  bottom: 20px; /* Distância do fundo da tela */
+  right: 20px; /* Distância da direita da tela */
+  display: flex; /* Para alinhar o botão e o seletor */
+  align-items: center; /* Centraliza verticalmente */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+/* Estilo para o botão de definir a voz */
+.tts-button {
+  background-color: #2e7d32; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Sem borda */
+  border-radius: 50%; /* Bordas arredondadas */
+  padding: 10px; /* Reduzir o espaçamento interno */
+  font-size: 1.2rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra */
+}
+
+/* Efeito de hover para o botão */
+.tts-button:hover {
+  background-color: #1b5e20; /* Cor ao passar o mouse */
+  transform: scale(1.1); /* Efeito de aumento */
+}
+
+/* Estilo para o seletor de voz */
+.voice-select {
+  padding: 5px; /* Reduzir o espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 25px; /* Bordas arredondadas */
+  margin-right: 10px; /* Margem à direita */
+  font-size: 1rem; /* Tamanho da fonte */
+  background: #f9f9f9; /* Cor de fundo */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  outline: none; /* Sem contorno */
+}
+.feedback-container {
+    position: fixed; /* Fixa a posição da caixa de feedback */
+    bottom: 20px; /* Distância do fundo da página */
+    left: 20px; /* Distância da lateral esquerda */
+    background: linear-gradient(145deg, #e6f9e8, #c4e7d4); /* Gradiente de fundo */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 15px; /* Bordas mais arredondadas */
+    padding: 15px; /* Aumentar o espaçamento interno */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+    width: 300px; /* Largura fixa da caixa de feedback */
+    z-index: 1000; /* Garante que a caixa esteja acima de outros elementos */
+    transition: box-shadow 0.3s ease; /* Efeito de transição suave */
+}
+
+.feedback-container:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao passar o mouse */
+}
+
+.feedback-textarea {
+    width: 100%; /* Largura total do textarea */
+    height: 80px; /* Altura do textarea */
+    border: 1px solid #ccc; /* Borda */
+    border-radius: 10px; /* Bordas mais arredondadas */
+    padding: 10px; /* Espaçamento interno maior */
+    margin-bottom: 10px; /* Espaço entre o textarea e o botão */
+    resize: none; /* Impede que o usuário redimensione o textarea */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra interna para profundidade */
+}
+
+.feedback-textarea:focus {
+    border-color: #5dfc8b; /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão */
+    box-shadow: 0 0 5px rgba(93, 252, 139, 0.5); /* Efeito de foco */
+}
+
+.feedback-button {
+  background-color: #2e7d32; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Sem borda */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: center; /* Centraliza o texto */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Para que funcione o padding e margin corretamente */
+  font-size: 16px; /* Tamanho da fonte */
+  border-radius: 25px; /* Arredonda os cantos do botão */
+  cursor: pointer; /* Altera o cursor ao passar o mouse */
+  transition: background-color 0.3s; /* Efeito de transição na cor de fundo */
+}
+
+.feedback-button:hover {
+  background-color: #034b07; /* Cor de fundo ao passar o mouse */
+}
+.feedback-instruction {
+  font-size: 14px; /* Tamanho da fonte */
+  color: #000000; /* Cor do texto */
+  margin-bottom: 10px; /* Espaçamento abaixo do texto */
+  text-align: center; /* Centraliza o texto */
+  font-weight: 600; /* Torna o texto mais forte */
+}
+.feedback-message {
+  margin-top: 10px; /* Espaço acima da mensagem */
+  color: #2e7d32; /* Cor do texto */
+  font-weight: 600; /* Negrito para destaque */
+  text-align: center; /* Centraliza a mensagem */
+}
+  /* Modo Escuro */
+  body.dark-mode {
+    background: #121212; /* Fundo um pouco mais claro que o preto */
+    color: #e0e0e0; /* Cor do texto geral mais suave */
+  }
+
+  .chat-container.dark-mode {
+    background: #1a1a1a; /* Um tom escuro para o container do chat */
+    border: 5px solid #444;
+    border-radius: 8px; /* Bordas arredondadas para suavizar o visual */
+  }
+
+  .header.dark-mode {
+    color: #b2e2b2; /* Cor dos textos do cabeçalho */
+  }
+
+  .chat-box.dark-mode {
+    background: #1c1c1c; /* Cor de fundo da caixa de chat um pouco mais clara */
+    border: 2px solid #555;
+    border-radius: 8px; /* Bordas arredondadas */
+  }
+
+  .user-message.dark-mode {
+    background-color: #00574b; /* Mensagens do usuário com um tom mais vibrante */
+    color: #ffffff; /* Cor do texto do usuário */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 8px; /* Espaçamento interno */
+  }
+
+  .assistant-message.dark-mode {
+    background-color: #3a3a3a; /* Mensagens do assistente mais sutis */
+    color: #ffffff; /* Cor do texto do assistente */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 8px; /* Espaçamento interno */
+  }
+
+  .input-section.dark-mode input {
+    background: #333; /* Cor de fundo do campo de entrada */
+    color: #ffffff; /* Cor do texto no campo de entrada */
+    border: 2px solid #666; /* Borda do campo de entrada */
+    border-radius: 5px; /* Bordas arredondadas */
+  }
+
+  .input-section.dark-mode input:focus {
+    background-color: #444; /* Cor ao focar no campo de entrada */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    border-color: #b2e2b2; /* Borda ao focar */
+  }
+
+  .input-section.dark-mode button {
+    background-color: #00796b; /* Cor do botão de envio */
+    color: #ffffff; /* Cor do texto do botão */
+    border: none;
+    padding: 10px;
+    border-radius: 5px; /* Bordas arredondadas */
+  }
+
+  .input-section.dark-mode button:hover {
+    background-color: #00574b; /* Efeito de hover no botão */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  }
+  .feedback-container.dark-mode {
+    background-color: #1c1c1c; /* Fundo escuro */
+    color: #ffffff; /* Texto claro */
+  }
+  .feedback-container.dark-mode .feedback-button {
+    background-color: #0056b3; /* Botão escuro */
+    color: #ffffff; /* Texto do botão claro */
+  }
+
+  .feedback-textarea.dark-mode {
+    border: 1px solid #555; /* Borda do textarea */
+    background: #666; /* Cor de fundo do textarea */
+    color: #ffffff; /* Cor do texto no textarea */
+    padding: 10px; /* Adiciona um pouco de espaço interno */
+    border-radius: 5px; /* Bordas arredondadas */
+  }
+
+  .feedback-container.dark-mode .feedback-textarea {
+    background-color: #333333; /* Fundo escuro para textarea */
+    color: #ffffff; /* Texto claro para textarea */
+  }
+
+  .feedback-button.dark-mode {
+    background-color: #00796b; /* Cor do botão de feedback */
+    color: #ffffff; /* Cor do texto do botão de feedback */
+    border-radius: 5px; /* Bordas arredondadas */
+  }
+
+  .feedback-instruction.dark-mode {
+    color: #e0e0e0; /* Cor do texto de instrução de feedback */
+  }
+
+  .feedback-message {
+    color: #ff0000; /* Mensagem de erro em vermelho */
+  }
+
+  .header.dark-mode p {
+    color: #e0e0e0; /* Cor do texto no modo escuro */
+  }
+
+  .initial-message.dark-mode {
+    color: #e0e0e0; /* Cor do texto no modo escuro */
+  }
+  .assistant-message.dark-mode {
+    background-color: #f0f0f0; /* Fundo claro por padrão */
+    color: #000000; /* Texto escuro por padrão */
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  body.dark-mode .assistant-message {
+    background-color: #000000; /* Fundo escuro para a mensagem */
+    color: #ffffff; /* Texto claro para a mensagem */
+  }
+  /* Transições suaves */
+  body,
+  .chat-container,
+  .header,
+  .chat-box,
+  .user-message,
+  .assistant-message,
+  .input-section input,
+  .input-section button,
+  .feedback-container,
+  .feedback-textarea,
+  .feedback-button,
+  .feedback-instruction,
+  .feedback-message {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .toggle-theme-button {
+    position: fixed; /* Fixa o botão na tela */
+    top: 20px; /* Distância do topo */
+    left: 20px; /* Distância da esquerda */
+    background: transparent; /* Fundo transparente */
+    border: none; /* Sem borda */
+    font-size: 2rem; /* Tamanho da fonte */
+    color: #b2e2b2; /* Cor do ícone do botão */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: transform 0.3s ease; /* Suave transição */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+  }
+
+  .toggle-theme-button:hover {
+    transform: scale(1.2); /* Aumenta o botão ao passar o mouse */
+  }
