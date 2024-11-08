@@ -201,7 +201,7 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
 
   // Enviar o feedback para a API
   try {
-    const response = await fetch('http://127.0.0.1:8000/save_feedback', {
+    const response = await fetch('https://panapi-production.up.railway.app/save_feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
