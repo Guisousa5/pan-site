@@ -213,7 +213,8 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ text: feedbackText }),
+      // Alteração: Enviando 'content' ao invés de 'text'
+      body: JSON.stringify({ content: feedbackText }), // Envia 'content' ao invés de 'text'
     });
 
     // Esconde o ícone de carregamento
@@ -244,7 +245,6 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
     }, 5000);
   }
 });
-
 // Alternar tema
 document.addEventListener('DOMContentLoaded', () => {
   const toggleThemeButton = document.getElementById('toggleThemeButton');
