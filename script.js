@@ -195,11 +195,18 @@ clearChatButton.addEventListener('click', () => {
   chatBox.innerHTML = ''; // Limpa todo o conteúdo do chat
 });
 
-// Envio de feedback
 document.getElementById('feedbackButton').addEventListener('click', async function() {
   const feedbackText = document.getElementById('feedbackText').value;
 
-  // Enviar o feedback para a API
+  // Validação do feedback
+  if (!feedbackText.trim()) {
+    alert('Por favor, insira um feedback antes de enviar!');
+    return;
+  }
+
+  // Exibe o ícone de carregamento
+  document.getElementById('loading').style.display = 'block';
+
   try {
     const response = await fetch('https://panapi-production.up.railway.app/save_feedback', {
       method: 'POST',
@@ -209,22 +216,32 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
       body: JSON.stringify({ text: feedbackText }),
     });
 
+    // Esconde o ícone de carregamento
+    document.getElementById('loading').style.display = 'none';
+
     if (response.ok) {
       // Limpa o textarea após o envio
       document.getElementById('feedbackText').value = '';
 
       // Exibe a mensagem de agradecimento
       const feedbackMessage = document.getElementById('feedbackMessage');
-      feedbackMessage.style.display = 'block'; // Torna a mensagem visível
+      feedbackMessage.style.display = 'block';
       feedbackMessage.textContent = "Agradecemos sua contribuição! Suas sugestões são valiosas e nos ajudarão a aprimorar cada vez mais o PAN.";
       setTimeout(() => {
-        feedbackMessage.style.display = 'none'; // Oculta a mensagem
+        feedbackMessage.style.display = 'none';
       }, 5000); // 5000 milissegundos = 5 segundos
     } else {
+      console.log('Erro ao enviar feedback. Status:', response.status);
       throw new Error("Erro ao enviar feedback.");
     }
   } catch (error) {
     console.error("Erro ao enviar feedback:", error);
+    const feedbackMessage = document.getElementById('feedbackMessage');
+    feedbackMessage.style.display = 'block';
+    feedbackMessage.textContent = "Ocorreu um erro ao enviar seu feedback. Tente novamente mais tarde.";
+    setTimeout(() => {
+      feedbackMessage.style.display = 'none';
+    }, 5000);
   }
 });
 
