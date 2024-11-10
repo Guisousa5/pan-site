@@ -204,46 +204,38 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
     return;
   }
 
-  // Exibe o ícone de carregamento
-  document.getElementById('loading').style.display = 'block';
-
-  try {
-    const response = await fetch('https://panapi-production.up.railway.app/save_feedback', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // Envia 'content' ao invés de 'text'
-      body: JSON.stringify({ content: feedbackText }),
-    });
-
-    // Esconde o ícone de carregamento
-    document.getElementById('loading').style.display = 'none';
-
-    if (response.ok) {
-      // Limpa o textarea após o envio
-      document.getElementById('feedbackText').value = '';
-
-      // Exibe a mensagem de agradecimento
-      const feedbackMessage = document.getElementById('feedbackMessage');
-      feedbackMessage.style.display = 'block';
-      feedbackMessage.textContent = "Agradecemos sua contribuição! Suas sugestões são valiosas e nos ajudarão a aprimorar cada vez mais o PAN.";
-      setTimeout(() => {
-        feedbackMessage.style.display = 'none';
-      }, 5000); // 5000 milissegundos = 5 segundos
-    } else {
-      console.log('Erro ao enviar feedback. Status:', response.status);
-      throw new Error("Erro ao enviar feedback.");
-    }
-  } catch (error) {
-    console.error("Erro ao enviar feedback:", error);
+ document.getElementById('feedbackButton').addEventListener('click', async () => {
+    const feedbackText = document.getElementById('feedbackText').value;
     const feedbackMessage = document.getElementById('feedbackMessage');
-    feedbackMessage.style.display = 'block';
-    feedbackMessage.textContent = "Ocorreu um erro ao enviar seu feedback. Tente novamente mais tarde.";
-    setTimeout(() => {
-      feedbackMessage.style.display = 'none';
-    }, 5000);
-  }
+    const feedbackId = crypto.randomUUID(); // Gera um UUID no JavaScript
+
+    try {
+        const response = await fetch("https://panapi-production.up.railway.app/save_feedback", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                content: feedbackText,
+                feedback_id: feedbackId
+            })
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            feedbackMessage.style.display = 'block';
+            feedbackMessage.textContent = "Feedback salvo com sucesso!";
+            feedbackMessage.style.color = 'green';
+        } else {
+            feedbackMessage.style.display = 'block';
+            feedbackMessage.textContent = "Erro ao salvar feedback.";
+            feedbackMessage.style.color = 'red';
+        }
+    } catch (error) {
+        feedbackMessage.style.display = 'block';
+        feedbackMessage.textContent = "Erro ao enviar feedback: " + error.message;
+        feedbackMessage.style.color = 'red';
+    }
 });
 // Alternar tema
 document.addEventListener('DOMContentLoaded', () => {
