@@ -229,7 +229,7 @@ document.getElementById('feedbackButton').addEventListener('click', async () => 
 
     // Mensagem de agradecimento e limpeza do campo de texto
     feedbackMessage.style.display = 'block';
-    feedbackMessage.textContent = "Obrigado pela sua opinião!";
+    feedbackMessage.textContent = "Obrigado pela sua sugestão! Sua opinião é muito importante para nós e nos ajuda a melhorar constantemente. Agradecemos pelo seu tempo e feedback!";
     feedbackMessage.style.color = 'blue';
     document.getElementById('feedbackText').value = ''; // Limpa o campo de texto
 });
