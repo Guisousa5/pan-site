@@ -227,11 +227,18 @@ document.getElementById('feedbackButton').addEventListener('click', async () => 
         feedbackMessage.style.color = 'red';
     }
 
-    // Mensagem de agradecimento e limpeza do campo de texto
+    // Mensagem de agradecimento
     feedbackMessage.style.display = 'block';
     feedbackMessage.textContent = "Obrigado pela sua sugestão! Sua opinião é muito importante para nós e nos ajuda a melhorar constantemente. Agradecemos pelo seu tempo e feedback!";
     feedbackMessage.style.color = 'blue';
-    document.getElementById('feedbackText').value = ''; // Limpa o campo de texto
+
+    // Limpa o campo de texto
+    document.getElementById('feedbackText').value = '';
+
+    // Esconde a mensagem de agradecimento após 5 segundos
+    setTimeout(function() {
+        feedbackMessage.style.display = 'none';
+    }, 5000); // 5000ms = 5 segundos
 });
 // Alternar tema
 document.addEventListener('DOMContentLoaded', () => {
