@@ -216,7 +216,6 @@ document.getElementById('feedbackButton').addEventListener('click', async () => 
             feedbackMessage.style.display = 'block';
             feedbackMessage.textContent = "Feedback salvo com sucesso!";
             feedbackMessage.style.color = 'green';
-            document.getElementById('feedbackText').value = ''; // Limpa o campo de texto
         } else {
             feedbackMessage.style.display = 'block';
             feedbackMessage.textContent = "Erro ao salvar feedback.";
@@ -227,6 +226,12 @@ document.getElementById('feedbackButton').addEventListener('click', async () => 
         feedbackMessage.textContent = "Erro ao enviar feedback: " + error.message;
         feedbackMessage.style.color = 'red';
     }
+
+    // Mensagem de agradecimento e limpeza do campo de texto
+    feedbackMessage.style.display = 'block';
+    feedbackMessage.textContent = "Obrigado pela sua opinião!";
+    feedbackMessage.style.color = 'blue';
+    document.getElementById('feedbackText').value = ''; // Limpa o campo de texto
 });
 // Alternar tema
 document.addEventListener('DOMContentLoaded', () => {
