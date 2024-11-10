@@ -195,19 +195,10 @@ clearChatButton.addEventListener('click', () => {
   chatBox.innerHTML = ''; // Limpa todo o conteúdo do chat
 });
 
-document.getElementById('feedbackButton').addEventListener('click', async function() {
-  const feedbackText = document.getElementById('feedbackText').value;
-
-  // Validação do feedback
-  if (!feedbackText.trim()) {
-    alert('Por favor, insira um feedback antes de enviar!');
-    return;
-  }
-
- document.getElementById('feedbackButton').addEventListener('click', async () => {
+document.getElementById('feedbackButton').addEventListener('click', async () => {
     const feedbackText = document.getElementById('feedbackText').value;
     const feedbackMessage = document.getElementById('feedbackMessage');
-    const feedbackId = crypto.randomUUID(); // Gera um UUID no JavaScript
+    const feedbackId = crypto.randomUUID(); // Gera um UUID para o feedback
 
     try {
         const response = await fetch("https://panapi-production.up.railway.app/save_feedback", {
@@ -222,10 +213,10 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
         });
 
         if (response.ok) {
-            const result = await response.json();
             feedbackMessage.style.display = 'block';
             feedbackMessage.textContent = "Feedback salvo com sucesso!";
             feedbackMessage.style.color = 'green';
+            document.getElementById('feedbackText').value = ''; // Limpa o campo de texto
         } else {
             feedbackMessage.style.display = 'block';
             feedbackMessage.textContent = "Erro ao salvar feedback.";
