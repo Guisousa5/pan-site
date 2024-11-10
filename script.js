@@ -213,8 +213,8 @@ document.getElementById('feedbackButton').addEventListener('click', async functi
       headers: {
         'Content-Type': 'application/json',
       },
-      // Alteração: Enviando 'content' ao invés de 'text'
-      body: JSON.stringify({ content: feedbackText }), // Envia 'content' ao invés de 'text'
+      // Envia 'content' ao invés de 'text'
+      body: JSON.stringify({ content: feedbackText }),
     });
 
     // Esconde o ícone de carregamento
