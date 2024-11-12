@@ -21,8 +21,8 @@ if ('speechSynthesis' in window) {
     
     // Adiciona as vozes ao menu suspenso
     voices.forEach(voice => {
-      if (voice.name === "Microsoft EmmaMultilingual Online (Natural) - English (United States)" || 
-          voice.name === "Microsoft Antonio Online (Natural) - Portuguese (Brazil)" ||
+      if (voice.name === "Microsoft Francisca Online (Natural) - Portuguese (Brazil)" || 
+          voice.name === " Microsoft AndrewMultilingual Online (Natural) - English (United States)" ||
           voice.name === "Microsoft Daniel - Portuguese (Brazil)" ||
           voice.name === "Microsoft Maria - Portuguese (Brazil)") {
           
