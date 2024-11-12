@@ -33,7 +33,7 @@ if ('speechSynthesis' in window) {
         option.textContent = voice.name === "Microsoft Francisca Online (Natural) - Portuguese (Brazil)" ? "Feminina (Humanizada)" :
                              voice.name === "Microsoft AndrewMultilingual Online (Natural) - English (United States)" ? "Masculina (Humanizada)" :
                              voice.name === "Microsoft Daniel - Portuguese (Brazil)" ? "Masculina" : 
-                             voice.name === "Microsoft Maria - Portuguese (Brazil)" ? "Feminina";
+                             voice.name === "Microsoft Maria - Portuguese (Brazil)" ? "Feminina" :
         
         voiceSelect.appendChild(option);
       }
