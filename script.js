@@ -22,7 +22,7 @@ if ('speechSynthesis' in window) {
     // Adiciona as vozes ao menu suspenso
     voices.forEach(voice => {
       if (voice.name === "Microsoft Francisca Online (Natural) - Portuguese (Brazil)" || 
-          voice.name === " Microsoft AndrewMultilingual Online (Natural) - English (United States)" ||
+          voice.name === "Microsoft AndrewMultilingual Online (Natural) - English (United States)" ||
           voice.name === "Microsoft Daniel - Portuguese (Brazil)" ||
           voice.name === "Microsoft Maria - Portuguese (Brazil)") {
           
@@ -30,10 +30,10 @@ if ('speechSynthesis' in window) {
         option.value = voice.voiceURI; // Usar voiceURI como valor
         
         // Alterar o nome mostrado no select
-        option.textContent = voice.name === "Microsoft EmmaMultilingual Online (Natural) - English (United States)" ? "Feminina (Humanizada)" :
-                             voice.name === "Microsoft Antonio Online (Natural) - Portuguese (Brazil)" ? "Masculina (Humanizada)" :
+        option.textContent = voice.name === "Microsoft Francisca Online (Natural) - Portuguese (Brazil)" ? "Feminina (Humanizada)" :
+                             voice.name === "Microsoft AndrewMultilingual Online (Natural) - English (United States)" ? "Masculina (Humanizada)" :
                              voice.name === "Microsoft Daniel - Portuguese (Brazil)" ? "Masculina" : 
-                             "Feminina";
+                             voice.name === "Microsoft Maria - Portuguese (Brazil)" ? "Feminina";
         
         voiceSelect.appendChild(option);
       }
